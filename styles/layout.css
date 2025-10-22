@@ -1,0 +1,47 @@
+/* Header / Nav */
+.site-header{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:16px
+}
+.logo{font-weight:800; letter-spacing:.3px}
+.nav-toggle{
+  border:1px solid #2a2834; background:#191624; color:var(--text);
+  padding:.6rem .9rem; border-radius:12px; cursor:pointer
+}
+
+/* interactive nav links */
+.site-nav{display:flex; gap:18px}
+.site-nav a{
+  position:relative;
+  padding:.45rem .7rem;
+  border-radius:10px;
+  font-weight:600;
+  transition: color .15s ease, transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.site-nav a[aria-current="page"]{
+  color:#fff; background:#1a1726; box-shadow:0 6px 16px rgba(0,0,0,.22)
+}
+.site-nav a:hover,
+.site-nav a:focus-visible{
+  color:#fff;
+  background:#242033;
+  transform: translateY(-2px) scale(1.04);
+  font-weight:800; /* bold on hover */
+  box-shadow:0 10px 22px rgba(0,0,0,.28);
+  animation: nav-pop .2s ease-out both;
+}
+@keyframes nav-pop{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(-2px) scale(1.04)}
+}
+
+@media (max-width:800px){
+  .site-nav{display:block}
+  .site-nav[hidden]{display:none}
+}
+
+/* Buttons & Footer */
+.btn{display:inline-block; border-radius:999px; padding:.85rem 1.15rem; border:1px solid transparent; font-weight:600; cursor:pointer}
+.btn-primary{background:var(--wine); color:#fff; box-shadow:0 10px 30px rgba(139,46,60,.35)}
+.btn-primary:hover{opacity:.95}
+
+.site-footer{border-top:1px solid #242033; color:var(--muted); display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; padding-block:24px; margin-top:40px}

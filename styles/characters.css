@@ -1,0 +1,114 @@
+/* Theme flip ready — overrides base background with themeable gradient */
+body.characters{
+  background:
+    radial-gradient(1000px 600px at 80% -10%, rgba(139,46,60,.16), transparent 60%),
+    linear-gradient(var(--bg-top, #0c0a10), var(--bg-mid, #120f17) 40%, var(--bg-bottom, #0c0a10));
+}
+
+/* Light/high-contrast variables when in Vampire mode */
+html.vampire{
+  --bg:#FAF7F2;
+  --panel:#ffffff;
+  --text:#1A121E;
+  --muted:#4E4755;
+  --wine:#B3132C;            /* punchier red */
+  --gold:#B8860B;
+  --bg-top:#f6f2ea;
+  --bg-mid:#ffffff;
+  --bg-bottom:#f6f2ea;
+}
+
+/* Layout */
+.char-layout{
+  display:grid; gap:24px; grid-template-columns: 1.05fr .95fr; align-items:start;
+  margin-top:8px;
+}
+@media (max-width: 900px){
+  .char-layout{ grid-template-columns: 1fr; }
+}
+
+/* Left image card */
+.char-figure{
+  position:relative;
+  background:linear-gradient(180deg,#12101a,#0f0d14);
+  border:1px solid #252134;
+  border-radius:16px; padding:14px; box-shadow: var(--shadow);
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease, border-color .2s ease;
+}
+html.vampire .char-figure{
+  background:linear-gradient(180deg,#ffffff,#f6f2ea);
+  border-color:#e8e2d9;
+}
+.char-figure:hover{ transform: translateY(-2px) scale(1.02); box-shadow: 0 16px 42px rgba(0,0,0,.38) }
+.char-figure:focus-visible{ outline:2px solid var(--gold); outline-offset:4px }
+
+.char-figure img{
+  width:100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius:12px; display:block;
+  transform: scale(1); opacity:1; transition: opacity .35s ease, transform .35s ease;
+}
+.char-figure.is-swapping img{ opacity:.25; transform: scale(1.04) }
+
+.form-tag{
+  position:absolute; left:14px; bottom:14px;
+  background:rgba(0,0,0,.55); color:#fff; padding:.35rem .55rem; border-radius:999px; font-size:.85rem;
+  border:1px solid rgba(255,255,255,.15);
+}
+html.vampire .form-tag{
+  background:rgba(0,0,0,.65); /* still readable over bright art */
+}
+
+/* Right info panel */
+.char-info{
+  background:var(--panel);
+  border:1px solid #242033; border-radius:16px; padding:18px; box-shadow: var(--shadow);
+}
+html.vampire .char-info{ border-color:#e9e4dc }
+
+.char-head h1{ margin:0 0 4px; font-size: clamp(26px,3.2vw,40px) }
+.alias{ margin:0 0 10px; color: var(--muted) }
+
+.char-stats{
+  display:grid; gap:8px;
+  margin:0 0 12px; padding:0; list-style:none;
+}
+.char-stats li{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:.55rem .7rem; background:#161320; border:1px solid #27233a; border-radius:10px;
+}
+.char-stats li span{ color: var(--muted) }
+.char-stats li strong{ font-weight:700 }
+html.vampire .char-stats li{
+  background:#faf7f2; border-color:#ebe5da;
+}
+
+.char-bio p{ margin:0 0 10px; color: var(--text) }
+.hint{ color: var(--muted) }
+
+/* Floating rose switch */
+.rose-switch{
+  position: fixed; right: 24px; top: 90px; z-index: 40;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  border:1px solid #2b2836; background:#181523; color:var(--text);
+  padding:.5rem .7rem; border-radius:16px; cursor:pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease, border-color .2s ease;
+}
+.rose-switch:hover{ transform: translateY(-2px) scale(1.04); box-shadow: 0 18px 44px rgba(0,0,0,.42) }
+.rose-switch:focus-visible{ outline:2px solid var(--gold); outline-offset:4px }
+
+.rose-switch img{ width:28px; height:28px; display:block }
+.rose-label{ font-size:.8rem; color: var(--muted) }
+html.vampire .rose-switch{ background:#ffffff; border-color:#e9e4dc }
+
+/* Smooth theme transitions */
+:root{
+  --theme-transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+html, body, .char-info, .char-figure{ transition: var(--theme-transition) }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .char-figure:hover, .rose-switch:hover{ transform:none; box-shadow: var(--shadow) }
+  .char-figure img{ transition: none }
+}

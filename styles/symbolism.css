@@ -1,0 +1,48 @@
+.page-title{ margin:6px 0 10px; font-size:clamp(26px,3.2vw,40px) }
+
+/* Alternating rows */
+.sym-row{
+  display:flex; gap:22px; align-items:stretch; margin:18px 0;
+}
+.sym-row:nth-child(even){ flex-direction: row-reverse; }
+
+.sym-copy{
+  flex:1.05; background:var(--panel);
+  border:1px solid #242033; border-radius:16px; padding:16px; box-shadow:var(--shadow);
+}
+.sym-copy h2{ margin:0 0 6px; font-size:1.25rem }
+.sym-copy p{ margin:0; color:var(--muted) }
+
+.sym-media{
+  flex:.95; position:relative;
+  background:linear-gradient(180deg,#12101a,#0f0d14);
+  border:1px solid #252134; border-radius:16px; padding:14px; box-shadow:var(--shadow);
+}
+.sym-media img{
+  width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; display:block;
+}
+
+/* Hover/focus swap for selected motifs */
+.swap{ cursor:pointer; outline: none; }
+.swap .img-alt{
+  position:absolute; inset:14px; border-radius:12px; object-fit:cover; aspect-ratio:16/9;
+  opacity:0; transform:scale(1.01);
+  transition: opacity .35s ease, transform .35s ease;
+}
+.swap:hover .img-alt,
+.swap:focus-visible .img-alt{ opacity:1; transform:scale(1) }
+
+.swap-hint{
+  position:absolute; left:22px; bottom:18px; font-size:.85rem;
+  background:rgba(0,0,0,.55); color:#fff; padding:.3rem .5rem; border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+/* Light theme compatibility if triggered globally */
+html.vampire .sym-copy{ border-color:#e9e4dc; background:#ffffff }
+html.vampire .sym-media{ border-color:#e9e4dc; background:#ffffff }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .swap .img-alt{ transition:none }
+}

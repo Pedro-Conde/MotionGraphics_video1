@@ -1,0 +1,20 @@
+    :root{
+  --wine:#8B2E3C; --gold:#DAA520; --navy:#1C2D3A; --ivory:#FAF7F2; --plum:#1A121E;
+  --bg:var(--plum); --panel:#14111a; --text:#ECE9F1; --muted:#A7A2B3;
+  --radius:16px; --container:min(1100px,92vw); --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--text);
+  background: radial-gradient(1000px 600px at 80% -10%, rgba(139,46,60,.16), transparent 60%),
+              linear-gradient(#0c0a10,#120f17 40%,#0c0a10);
+  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+}
+a{color:var(--gold); text-decoration:none}
+a:hover{ text-decoration:none } /* no underline on hover anywhere */
+img{max-width:100%; display:block}
+.container{width:var(--container); margin-inline:auto; padding:24px}
+.skip-link{position:absolute; left:-9999px}
+.skip-link:focus{left:12px; top:12px; background:#000; color:#fff; padding:.5rem .75rem; z-index:999}
+.visually-hidden{position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}

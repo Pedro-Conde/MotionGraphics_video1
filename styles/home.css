@@ -1,0 +1,155 @@
+/* Stylized video container (unchanged above) */
+
+/* Duo section */
+.duo__head h2{margin:18px 0}
+.duo__grid{
+  display:grid; gap:22px; grid-template-columns:1.05fr .95fr; align-items:center;
+}
+@media (max-width:900px){ .duo__grid{grid-template-columns:1fr} }
+
+/* Click-to-swap figure */
+.swap-figure{
+  position:relative;
+  background:linear-gradient(180deg,#12101a,#0f0d14);
+  border:1px solid #252134; border-radius:16px; padding:14px; overflow:hidden; box-shadow:var(--shadow);
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.swap-figure:hover{ transform: translateY(-2px) scale(1.02); box-shadow:0 14px 34px rgba(0,0,0,.38) }
+.swap-figure:focus-visible{ outline:2px solid var(--gold); outline-offset:4px }
+
+/* force same visual size regardless of source ratio */
+.swap-figure img{
+  width:100%;
+  aspect-ratio: 4 / 5;         /* consistent portrait ratio */
+  object-fit: cover;            /* crop nicely */
+  border-radius:12px;
+  transform:scale(1);
+  opacity:1;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+/* quick swap animation class */
+.swap-figure.is-swapping img{
+  opacity:.25;
+  transform:scale(1.04);
+}
+
+#swap-caption{margin-top:8px; color:var(--muted)}
+
+/* CTA button hover animation (no underline) */
+.btn-primary{
+  position:relative;
+  overflow:hidden;
+}
+.btn-primary:hover{
+  transform: translateY(-1px) scale(1.02);
+  box-shadow:0 12px 36px rgba(139,46,60,.45);
+}
+.btn-primary::after{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:999px;
+  box-shadow:0 0 0 0 rgba(218,165,32,.0);
+  transition: box-shadow .25s ease;
+}
+.btn-primary:hover::after{
+  box-shadow:0 0 0 8px rgba(218,165,32,.08); /* playful pulse ring */
+}
+
+/* Title block (unchanged) */
+/* Video (unchanged) */
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  .swap-figure:hover{ transform:none; box-shadow:var(--shadow) }
+  .swap-figure img{ transition:none }
+  .btn-primary:hover{ transform:none }
+  .btn-primary::after, .btn-primary:hover::after{ box-shadow:none }
+}
+
+/* ===== Local Video Player ===== */
+.video-wrap{margin-top:18px}
+
+.video-frame{
+  position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
+  border:1px solid #2a2636; background:#0e0b14;
+}
+
+/* The video itself */
+.sv-video{
+  width:100%; display:block; aspect-ratio:16/9; background:#000;
+}
+
+/* Controls bar */
+.sv-controls{
+  display:flex; align-items:center; gap:12px;
+  position:absolute; left:0; right:0; bottom:0;
+  padding:10px 12px;
+  background: linear-gradient(180deg, rgba(20,17,26,0) 0%, rgba(20,17,26,.9) 45%, rgba(20,17,26,.95) 100%);
+  backdrop-filter: blur(6px);
+}
+
+/* Buttons */
+.sv-btn{
+  border:1px solid #2b2836; background:#181523; color:var(--text);
+  padding:.5rem .7rem; border-radius:10px; cursor:pointer; min-width:44px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.sv-btn:hover, .sv-btn:focus-visible{
+  background:#242033; transform: translateY(-1px) scale(1.03);
+  box-shadow:0 8px 18px rgba(0,0,0,.28);
+}
+
+/* Time + Seek */
+.sv-time{
+  flex:1; display:flex; align-items:center; gap:8px;
+  color:var(--muted); font-variant-numeric: tabular-nums;
+}
+
+.sv-seek{
+  flex:1; appearance:none; height:6px; border-radius:999px; background:#2b2936; cursor:pointer;
+  outline:none;
+}
+.sv-seek::-webkit-slider-thumb{
+  appearance:none; width:14px; height:14px; border-radius:50%; background:var(--wine);
+  border:1px solid #000; box-shadow:0 0 0 3px rgba(139,46,60,.25);
+}
+.sv-seek::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%; background:var(--wine);
+  border:1px solid #000; box-shadow:0 0 0 3px rgba(139,46,60,.25);
+}
+
+/* Volume slider */
+.sv-volume{
+  width:110px; appearance:none; height:6px; border-radius:999px; background:#2b2936; cursor:pointer; outline:none;
+}
+.sv-volume::-webkit-slider-thumb{
+  appearance:none; width:14px; height:14px; border-radius:50%; background:var(--gold);
+  border:1px solid #000; box-shadow:0 0 0 3px rgba(218,165,32,.22);
+}
+.sv-volume::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%; background:var(--gold);
+  border:1px solid #000; box-shadow:0 0 0 3px rgba(218,165,32,.22);
+}
+
+/* Keep the decorative pulse you had */
+.video-chrome{
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(closest-side, rgba(139,46,60,.45), transparent 70%) 70% 35% / 60% 60% no-repeat,
+    radial-gradient(closest-side, rgba(218,165,32,.14), transparent 70%) 25% 75% / 40% 40% no-repeat,
+    url("../images/frame-noise.png");
+  mix-blend-mode: screen;
+  filter: blur(14px) saturate(1.1);
+  opacity:.75;
+  transition: opacity .2s ease;
+}
+
+/* Hide chrome slightly while playing to reduce distraction */
+.playing .video-chrome{ opacity:.45 }
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .sv-btn:hover{ transform:none; box-shadow:none }
+}
