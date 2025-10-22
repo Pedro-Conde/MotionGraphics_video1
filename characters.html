@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sweet Venom: A Digital Lorebook — Characters</title>
+  <meta name="description" content="Meet Hiro and Momoka. Toggle human/vampire forms and switch characters via the rose." />
+  <link href="styles/base.css" rel="stylesheet" />
+  <link href="styles/layout.css" rel="stylesheet" />
+  <link href="styles/characters.css" rel="stylesheet" />
+</head>
+<body class="characters">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header container">
+    <a class="logo" href="index.html">Sweet Venom</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="site-nav" hidden>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="characters.html" aria-current="page">Characters</a>
+      <a href="symbolism.html">Symbolism</a>
+    </nav>
+  </header>
+
+  <!-- Rose switch (floating). Shows current icon color; click to switch Hiro ↔ Momoka -->
+  <button id="roseSwitch" class="rose-switch" aria-label="Switch character" title="Switch character">
+    <img id="roseIcon" src="icons/white-rose.png" alt="" />
+    <span id="roseLabel" class="rose-label">Switch to Momoka</span>
+  </button>
+
+  <main id="main" class="container">
+    <section class="char-layout">
+      <!-- Left: character image (click to toggle Human ↔ Vampire) -->
+      <figure id="charFigure" class="char-figure" role="button" tabindex="0"
+              aria-label="Toggle form (Human/Vampire)" aria-pressed="false">
+        <img id="charImage" src="images/characters/hiro-human.jpg" alt="Hiro in human form" />
+        <figcaption id="formTag" class="form-tag">Human</figcaption>
+      </figure>
+
+      <!-- Right: character info -->
+      <div class="char-info">
+        <header class="char-head">
+          <h1 id="charName">Hiro Mashida</h1>
+          <p id="charAlias" class="alias">The White Rose</p>
+        </header>
+
+        <ul class="char-stats">
+          <li><span>Date of birth</span><strong id="charDob">April 20, 2004 (21)</strong></li>
+          <li><span>Height</span><strong id="charHeight">5'9" (175 cm)</strong></li>
+          <li><span>Blood type</span><strong id="charBlood">O−</strong></li>
+          <li><span>Current form</span><strong id="charForm">Human</strong></li>
+        </ul>
+
+        <div class="char-bio">
+          <p id="charBio">
+            Hiro is a young college student, born and raised in Vancouver, Canada. The routine of a young
+            adult wears him down day by day, making him question his path—until he meets Momoka, who brings
+            color to his colorless world. He can’t deny a woman like Momoka.
+          </p>
+        </div>
+
+        <small class="hint">Tip: click the portrait to switch between Human ↔ Vampire.</small>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>
+      Music: “Sweet Venom (English Ver.)” by ENHYPEN — educational/non-commercial use.
+      Listen on <a href="https://youtu.be/Gzp6X9xQ5PA?si=oZWaCefhkATo9eMx" target="_blank" rel="noopener">YouTube</a>
+      or <a href="https://open.spotify.com/track/47JqJobasbTT9r0gX8CoE1" target="_blank" rel="noopener">Spotify</a>.
+    </small>
+    <small class="copyright">&copy; <span id="year"></span> Pedro Conde</small>
+  </footer>
+
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/characters.js" defer></script>
+</body>
+</html>

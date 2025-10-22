@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sweet Venom: A Digital Lorebook — Home</title>
+  <meta name="description" content="Sweet Venom: A Digital Lorebook — a companion to a lyrics AMV about Hiro and the vampire Momoka." />
+  <link href="styles/base.css" rel="stylesheet" />
+  <link href="styles/layout.css" rel="stylesheet" />
+  <link href="styles/home.css" rel="stylesheet" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header container">
+    <a class="logo" href="index.html">Sweet Venom</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="site-nav" hidden>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="characters.html">Characters</a>
+      <a href="symbolism.html">Symbolism</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Title block -->
+    <section class="title-block container">
+      <h1>Sweet Venom: A Digital Lorebook</h1>
+      <p class="byline">by <strong>Pedro Conde</strong></p>
+      <p class="subtitle">“The pure rose that was once white, turned red when immersed in the sweet venom.”</p>
+    </section>
+
+    <section class="video-wrap container" aria-label="AMV video">
+  <h2 class="visually-hidden">Video</h2>
+
+  <div class="video-frame">
+    <video id="sv-video" class="sv-video" preload="metadata" playsinline>
+      <!-- If you have a poster image, add poster="images/poster.jpg" to the <video> tag -->
+      <source src="video/sweet-venom.webm" type="video/webm">
+      <source src="video/sweet-venom.mp4" type="video/mp4">
+      <!-- Optional captions (WebVTT) -->
+      <!-- <track default kind="captions" srclang="en" src="video/captions.vtt" label="English"> -->
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Custom controls -->
+    <div class="sv-controls" role="group" aria-label="Video controls">
+      <button class="sv-btn" id="sv-play" aria-label="Play/Pause" title="Play/Pause">▶</button>
+
+      <div class="sv-time">
+        <span id="sv-current">0:00</span>
+        <input id="sv-seek" class="sv-seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+        <span id="sv-duration">0:00</span>
+      </div>
+
+      <button class="sv-btn" id="sv-mute" aria-label="Mute/Unmute" title="Mute/Unmute">🔊</button>
+
+      <input id="sv-volume" class="sv-volume" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volume">
+
+      <button class="sv-btn" id="sv-full" aria-label="Fullscreen" title="Fullscreen">⛶</button>
+    </div>
+
+    <!-- Decorative chrome (keeps your moody frame) -->
+    <div class="video-chrome" aria-hidden="true"></div>
+  </div>
+
+  <small class="video-note">Watch the original context; the lore unfolds below.</small>
+</section>
+
+
+    <!-- Characters teaser -->
+    <section class="duo container">
+      <header class="duo__head">
+        <h2>The White Rose and the Red Rose</h2>
+      </header>
+
+      <div class="duo__grid">
+        <!-- Left: image that swaps Hiro → Momoka on click -->
+        <figure class="swap-figure" id="swap-figure" tabindex="0" role="button" aria-pressed="false" aria-label="Toggle between Hiro and Momoka">
+  <img id="swap-image" src="images/hiro.png" alt="Hiro — the White Rose" />
+  <figcaption id="swap-caption">Hiro — the White Rose</figcaption>
+</figure>
+
+        <!-- Right: copy + CTA -->
+        <div class="duo__copy">
+          <p class="lede">Two souls entangled by fate. One offering eternity, the other seeking escape.</p>
+          <a class="btn btn-primary" href="characters.html">Read more about characters</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <small>
+      Music: “Sweet Venom (English Ver.)” by ENHYPEN — used here for educational/non-commercial purposes.
+      Listen on <a href="https://youtu.be/Gzp6X9xQ5PA?si=oZWaCefhkATo9eMx" target="_blank" rel="noopener">YouTube</a>
+      or <a href="https://open.spotify.com/track/47JqJobasbTT9r0gX8CoE1" target="_blank" rel="noopener">Spotify</a>.
+    </small>
+    <small class="copyright">&copy; <span id="year"></span> Pedro Conde</small>
+  </footer>
+
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/home.js" defer></script>
+</body>
+</html>
